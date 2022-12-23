@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>TODO</title>
+  </head>
+  <body>
+    <div class="todo">
+      <div class="todo__wrap">
+        <div class="todo__priority priority">
+          <h2 class="priority__title">HIGH</h2>
+          <form action="#" class="todo__form todo__form--high">
+            <label for="todo__task-new task-new" class="task-new">
+              <input
+                type="text"
+                class="task-new__input task-new__input--high"
+                placeholder="Добавить важных дел"
+              />
+              <div class="task-new__add">
+                <input type="submit" class="task-new__btn btn-reset" value="" />
+              </div>
+            </label>
+          </form>
+          <div class="todo__list todo__list--high"></div>
+        </div>
+        <div class="todo__priority priority">
+          <h2 class="priority__title">LOW</h2>
+          <form action="#" class="todo__form todo__form--low">
+            <label for="todo__task-new task-new" class="task-new">
+              <input
+                type="text"
+                class="task-new__input task-new__input--low"
+                placeholder="Добавить важных дел"
+              />
+              <div class="task-new__add">
+                <input type="submit" class="task-new__btn btn-reset" value="" />
+              </div>
+            </label>
+          </form>
+          <div class="todo__list todo__list--low"></div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

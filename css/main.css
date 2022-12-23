@@ -1,0 +1,261 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+:root {
+  --accent-color: #7acc82;
+  --dark-color: #000;
+  --light-color: #fff;
+  --error-color: rgb(227, 0, 0);
+  --border-color: #989898;
+  --silver-color: #bbbbbb;
+  --venus-color: #998899;
+  --text-color: #202020;
+  --task-done: #f4f4f4;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto.woff2') format('woff2');
+}
+
+body {
+  margin: 0;
+  background-color: var(--accent-color);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: var(--text-color);
+}
+
+.btn-reset {
+  border: none;
+  padding: 0;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px 0;
+}
+
+.todo__wrap {
+  max-width: 476px;
+  min-width: 476px;
+  padding: 25px 8px;
+  border-radius: 10px;
+  background-color: var(--light-color);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.todo__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.priority__title {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: var(--dark-color);
+}
+
+.task-new {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.task-new__input {
+  flex-grow: 1;
+  padding: 12px;
+  padding-right: 45px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: inherit;
+}
+
+.task-new__input::placeholder {
+  color: var(--silver-color);
+}
+
+.task-new__add {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+}
+
+.task-new__add::after,
+.task-new__add::before {
+  position: absolute;
+  content: '';
+  top: 50%;
+  background-color: var(--border-color);
+}
+
+.task-new__add::after {
+  right: 0;
+  width: 20px;
+  height: 2px;
+  transform: translateY(-50%);
+}
+
+.task-new__add::before {
+  left: 50%;
+  width: 2px;
+  height: 20px;
+  transform: translate(-50%, -50%);
+}
+
+.task-new__btn {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  right: 0;
+}
+
+.task {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  padding-right: 45px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+.status-done {
+  background-color: var(--task-done);
+}
+
+.task__name {
+  margin: 0;
+  color: inherit;
+  user-select: none;
+}
+
+.task__checkbox-real {
+  z-index: -1;
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.task__checkbox-real:focus-visible + .task__checkbox-custom {
+  box-shadow: 0px 0px 0px 2px var(--accent-color),
+    0px 0px 10px rgba(122, 204, 130, 0.5);
+}
+
+.task__checkbox-custom {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  border: 1px solid #998897;
+  border-radius: 50%;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.task__checkbox-custom::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  content: '';
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  transition: 0.2s ease-in;
+}
+
+.task__checkbox-real:checked + .task__checkbox-custom::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.task-delete {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 16px;
+  height: 16px;
+}
+
+.task-delete::after,
+.task-delete::before {
+  position: absolute;
+  content: '';
+  background-color: var(--border-color);
+  width: 2px;
+  height: 20px;
+}
+
+.task-delete::after {
+  right: 0;
+  rotate: -45deg;
+  transform: translateY(-50%);
+}
+
+.task-delete::before {
+  left: 0;
+  rotate: 45deg;
+  transform: translateY(-50%);
+}
+
+.task--done {
+  text-decoration: none;
+  background-color: var(--task-done);
+}
+
+.task__name {
+  position: relative;
+  cursor: pointer;
+}
+
+.task__name::after {
+  position: absolute;
+  content: '';
+  width: 0%;
+  height: 2px;
+  top: 50%;
+  left: 0;
+  background-color: var(--dark-color);
+  transition: all 0.5s;
+  transform: translateY(-50%);
+}
+
+.task__name:hover::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 2px;
+  top: 50%;
+  left: 0;
+  background-color: var(--dark-color);
+}
