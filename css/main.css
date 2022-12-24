@@ -238,7 +238,7 @@ body {
   cursor: pointer;
 }
 
-.task__name::after {
+/* .task__name::after {
   position: absolute;
   content: '';
   width: 0%;
@@ -258,4 +258,4 @@ body {
   top: 50%;
   left: 0;
   background-color: var(--dark-color);
-}
+} */
