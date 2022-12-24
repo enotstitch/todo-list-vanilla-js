@@ -148,7 +148,7 @@ body {
   border-radius: 6px;
 }
 
-.status-done {
+.task [data-status='done'] {
   background-color: var(--task-done);
 }
 
