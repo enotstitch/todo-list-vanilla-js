@@ -43,7 +43,7 @@ body {
   cursor: pointer;
 }
 
-.todo {
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,7 +51,7 @@ body {
   padding: 20px 0;
 }
 
-.todo__wrap {
+.todo {
   max-width: 476px;
   min-width: 476px;
   padding: 25px 8px;
