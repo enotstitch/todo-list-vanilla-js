@@ -20,19 +20,19 @@ const DEFAULT_PRIORITY = PRIORITY.HIGH;
 
 highForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  addTask(tasksList, highInput.value, PRIORITY.HIGH, DEFAULT_STATUS);
+  addTask(tasksList, highInput.value, PRIORITY.HIGH);
   event.target.reset();
 });
 
 lowForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  addTask(tasksList, lowInput.value, PRIORITY.LOW, DEFAULT_STATUS);
+  addTask(tasksList, lowInput.value, PRIORITY.LOW);
   event.target.reset();
 });
 
 let tasksList = [];
 
-const addTask = (list, taskName, priority, status) => {
+const addTask = (list, taskName, priority) => {
   if (taskName === '') {
     return;
   }
@@ -40,7 +40,7 @@ const addTask = (list, taskName, priority, status) => {
   list.push({
     name: taskName,
     priority,
-    status,
+    status: DEFAULT_STATUS,
     checkboxState: false,
   });
 
