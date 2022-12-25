@@ -32,6 +32,7 @@ lowForm.addEventListener('submit', (event) => {
 
 todoList.addEventListener('click', (event) => {
   changeStatusTask(tasksList);
+  deleteTask(tasksList);
 });
 
 let tasksList = [];
@@ -60,6 +61,22 @@ const changeStatusTask = (list) => {
     const taskName = labelTask.querySelector('.task__name');
     let taskItem = list.find((task) => task.name === taskName.textContent);
     taskItem.checkboxState = !taskItem.checkboxState;
+  }
+
+  render(list);
+};
+
+const deleteTask = (list) => {
+  const target = event.target;
+  const deleteButtonClick = target.classList.contains('task-delete');
+
+  if (deleteButtonClick) {
+    const labelTask = target.parentNode;
+    const taskName = labelTask.querySelector('.task__name');
+    let taskIndex = list.findIndex(
+      (task) => task.name === taskName.textContent
+    );
+    list.splice(taskIndex, 1);
   }
 
   render(list);
