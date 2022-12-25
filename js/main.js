@@ -34,16 +34,7 @@ todoList.addEventListener('click', (event) => {
   changeStatusTask(tasksList);
 });
 
-let tasksList = [
-  // { checkboxState: false, name: 'ываыва', priority: 'high', status: 'todo' },
-  // { checkboxState: false, name: 'sdfsdfsdf', priority: 'low', status: 'todo' },
-  // {
-  //   checkboxState: true,
-  //   name: 'ываыsdgdfgdfhgfhва',
-  //   priority: 'high',
-  //   status: 'todo',
-  // },
-];
+let tasksList = [];
 
 const addTask = (list, taskName, priority) => {
   if (taskName === '') {
