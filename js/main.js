@@ -79,6 +79,14 @@ const render = (list) => {
   todoListLow.innerHTML = '';
 
   list.forEach((task) => {
+    if (task.checkboxState) {
+      task.status = STATUS.DONE;
+    } else {
+      task.status = STATUS.TO_DO;
+    }
+  });
+
+  list.forEach((task) => {
     if (task.priority === PRIORITY.HIGH) {
       createBlockTask(todoListHigh, task.name, task.status, task.checkboxState);
     } else if (task.priority === PRIORITY.LOW) {
