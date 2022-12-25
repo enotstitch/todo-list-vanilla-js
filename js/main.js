@@ -1,3 +1,4 @@
+const todoList = document.querySelector('.todo');
 const highForm = document.querySelector('.todo__form--high');
 const lowForm = document.querySelector('.todo__form--low');
 const highInput = document.querySelector('.task-new__input--high');
@@ -16,7 +17,6 @@ const PRIORITY = {
 };
 
 const DEFAULT_STATUS = STATUS.TO_DO;
-const DEFAULT_PRIORITY = PRIORITY.HIGH;
 
 highForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -30,7 +30,20 @@ lowForm.addEventListener('submit', (event) => {
   event.target.reset();
 });
 
-let tasksList = [];
+todoList.addEventListener('click', (event) => {
+  changeStatusTask(tasksList);
+});
+
+let tasksList = [
+  // { checkboxState: false, name: 'ываыва', priority: 'high', status: 'todo' },
+  // { checkboxState: false, name: 'sdfsdfsdf', priority: 'low', status: 'todo' },
+  // {
+  //   checkboxState: true,
+  //   name: 'ываыsdgdfgdfhgfhва',
+  //   priority: 'high',
+  //   status: 'todo',
+  // },
+];
 
 const addTask = (list, taskName, priority) => {
   if (taskName === '') {
@@ -47,6 +60,20 @@ const addTask = (list, taskName, priority) => {
   render(list);
 };
 
+const changeStatusTask = (list) => {
+  const target = event.target;
+  const checkboxClick = target.classList.contains('task__checkbox-custom');
+
+  if (checkboxClick) {
+    const labelTask = target.parentNode;
+    const taskName = labelTask.querySelector('.task__name');
+    let taskItem = list.find((task) => task.name === taskName.textContent);
+    taskItem.checkboxState = !taskItem.checkboxState;
+  }
+
+  render(list);
+};
+
 const render = (list) => {
   todoListHigh.innerHTML = '';
   todoListLow.innerHTML = '';
@@ -54,7 +81,6 @@ const render = (list) => {
   list.forEach((task) => {
     if (task.priority === PRIORITY.HIGH) {
       createBlockTask(todoListHigh, task.name, task.status, task.checkboxState);
-      return;
     } else if (task.priority === PRIORITY.LOW) {
       createBlockTask(todoListLow, task.name, task.status, task.checkboxState);
     }
